@@ -45,7 +45,7 @@ function formatMessage(message, source) {
  */
 function tryCatch(fn, source) {
   try {
-    fn()
+    return fn()
   }
   catch (err) {
     err.message = formatMessage(err.message, source)

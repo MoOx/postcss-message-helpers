@@ -10,7 +10,27 @@ This modules offers you some function to throw or just output messages with [GNU
 $ npm install postcss-message-helpers
 ```
 
+```js
+var messageHelpers = require("postcss-message-helpers")
+```
+
 ## Usage
+
+### `var fnValue = messageHelpers.try(fn, source)`
+
+Execute `fn` an return the value.
+If an exception is thrown during the process, the exception will be catched, enhanced from source & re-throw.
+
+### `var sourceMessage = messageHelpers.message(message, source)`
+
+Returns a message like `sourcefile:lineno:column: message`.  
+`source` should be a postcss source object from a node.
+
+### `var source = messageHelpers.source(source)`
+
+Returns `sourcefile:lineno:column` for a given `source` postcss object.
+
+### Example
 
 ```js
 // dependencies
