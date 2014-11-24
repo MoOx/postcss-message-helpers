@@ -1,4 +1,4 @@
-# postcss-message-helpers [![Build Status](https://travis-ci.org/postcss/postcss-message-helpers.png)](https://travis-ci.org/postcss/postcss-message-helpers)
+# postcss-message-helpers [![Build Status](https://travis-ci.org/MoOx/postcss-message-helpers.png)](https://travis-ci.org/MoOx/postcss-message-helpers)
 
 > [PostCSS](https://github.com/postcss/postcss) helpers to throw or output GNU style messages.
 
@@ -70,7 +70,7 @@ Checkout [tests](test) for more examples.
 
 Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
 
-    $ git clone https://github.com/postcss/postcss-message-helpers.git
+    $ git clone https://github.com/MoOx/postcss-message-helpers.git
     $ git checkout -b patch-1
     $ npm install
     $ npm test

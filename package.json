@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/postcss/postcss-message-helpers.git"
+    "url": "https://github.com/MoOx/postcss-message-helpers.git"
   },
   "files": [
     "CHANGELOG.md",
