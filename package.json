@@ -1,6 +1,6 @@
 {
   "name": "postcss-message-helpers",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "PostCSS helpers to throw or output GNU style messages",
   "keywords": [
     "css",
