@@ -1,4 +1,9 @@
 /**
+ * Constants
+ */
+var SPLITTER = "\n    at "
+
+/**
  * PostCSS helpers
  */
 module.exports = {
@@ -48,17 +53,18 @@ function tryCatch(fn, source) {
     return fn()
   }
   catch (err) {
+    err.originalMessage = err.message
     err.message = formatMessage(err.message, source)
 
     // if source seems interesting, enhance error
     if (typeof source === "object") {
       // add a stack item if something interesting available
       if (source.file || source.start) {
-        var stack = err.stack.split("\n")
+        var stack = err.stack.split(SPLITTER)
         var firstStackItem = stack.shift()
-        stack.unshift("    at " + sourceString(source))
+        stack.unshift(sourceString(source))
         stack.unshift(firstStackItem)
-        err.stack = stack.join("\n")
+        err.stack = stack.join(SPLITTER)
       }
 
       if (source.file) {
