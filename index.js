@@ -20,8 +20,8 @@ module.exports = {
 function sourceString(source) {
   var message = "<css input>"
   if (source) {
-    if (source.file) {
-      message = source.file
+    if (source.input && source.input.file) {
+      message = source.input.file
     }
     if (source.start) {
       message += ":" + source.start.line + ":" + source.start.column
@@ -59,7 +59,7 @@ function tryCatch(fn, source) {
     // if source seems interesting, enhance error
     if (typeof source === "object") {
       // add a stack item if something interesting available
-      if (source.file || source.start) {
+      if ((source.input && source.input.file) || source.start) {
         var stack = err.stack.split(SPLITTER)
         var firstStackItem = stack.shift()
         stack.unshift(sourceString(source))
@@ -67,8 +67,8 @@ function tryCatch(fn, source) {
         err.stack = stack.join(SPLITTER)
       }
 
-      if (source.file) {
-        err.fileName = source.file
+      if (source.input && source.input.file) {
+        err.fileName = source.input.file
       }
       if (source.start) {
         err.lineNumber = source.start.line
