@@ -44,7 +44,7 @@ var css = fs.readFileSync("input.css", "utf8")
 // process css
 var output = postcss()
   .use(function(styles) {
-    styles.eachDecl(function transformDecl(decl) {
+    styles.walkDecls(function transformDecl(decl) {
       // will catch, adjust error stack, line, column & message (gnu style) then re-throw
       messageHelpers.try(function IwillThrow() {
         if (decl.value.indexOf("error(") > -1) {
