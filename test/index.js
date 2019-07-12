@@ -20,7 +20,7 @@ var postcss = PostCSS().use(function(styles) {
 
 test("postcss try helper", function(t) {
   try {
-    postcss.process("\nthis{throws:error(alert!)}", { from: "file.css" });
+    postcss.process("\nthis{throws:error(alert!)}", { from: "file.css" }).css;
     t.fail("should throw an error with adjusted stack");
   } catch (e) {
     var stack = e.stack.split("\n");
@@ -49,7 +49,7 @@ test("postcss try helper", function(t) {
   }
 
   try {
-    postcss.process("\nthis{throws:error(alert!)}");
+    postcss.process("\nthis{throws:error(alert!)}").css;
     t.fail("should throw an error with adjusted stack");
   } catch (e) {
     var stack2 = e.stack.split("\n");
@@ -66,7 +66,7 @@ test("postcss try helper", function(t) {
   }
 
   try {
-    postcss.process("\nthis{throws:multierr(alert!)}");
+    postcss.process("\nthis{throws:multierr(alert!)}").css;
     t.fail("should throw an error with adjusted stack");
   } catch (e) {
     var stack3 = e.stack.split("\n");
