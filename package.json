@@ -22,10 +22,19 @@
     "index.js"
   ],
   "devDependencies": {
+    "eslint": "^6.0.1",
     "postcss": "^4.0.2",
     "tape": "^3.0.0"
   },
   "scripts": {
-    "test": "tape test"
+    "lint": "eslint .",
+    "tests": "tape test",
+    "test": "yarn lint && yarn tests"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "node": true
+    }
   }
 }

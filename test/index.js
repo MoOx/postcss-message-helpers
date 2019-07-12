@@ -37,9 +37,9 @@ test("postcss try helper", function(t) {
     t.fail("should throw an error with adjusted stack")
   }
   catch (e) {
-    var stack = e.stack.split("\n")
-    t.equal(stack[0], "Error: <css input>:2:6: error detected: error(alert!)", "try() should have an explicit message (<css input>:lineno:column: message)")
-    t.equal(stack[1], "    at <css input>:2:6", "try() should have a new item in the stack trace (<css input>:lineno:column)")
+    var stack2 = e.stack.split("\n")
+    t.equal(stack2[0], "Error: <css input>:2:6: error detected: error(alert!)", "try() should have an explicit message (<css input>:lineno:column: message)")
+    t.equal(stack2[1], "    at <css input>:2:6", "try() should have a new item in the stack trace (<css input>:lineno:column)")
   }
 
   try {
@@ -47,9 +47,9 @@ test("postcss try helper", function(t) {
     t.fail("should throw an error with adjusted stack")
   }
   catch (e) {
-    var stack = e.stack.split("\n")
-    t.equal(stack[0], "Error: <css input>:2:6: error detected: ", "try() should have an explicit message (<css input>:lineno:column: message)")
-    t.equal(stack[2], "    at <css input>:2:6", "try() should have a new item in the stack trace (<css input>:lineno:column)")
+    var stack3 = e.stack.split("\n")
+    t.equal(stack3[0], "Error: <css input>:2:6: error detected: ", "try() should have an explicit message (<css input>:lineno:column: message)")
+    t.equal(stack3[2], "    at <css input>:2:6", "try() should have a new item in the stack trace (<css input>:lineno:column)")
   }
 
   t.equal(postcss.process("say{hello:people}").css, "say{hello:world}", "try() should return the value of the callback if nothing happen")
