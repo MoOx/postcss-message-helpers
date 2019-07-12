@@ -1,4 +1,7 @@
-# postcss-message-helpers [![Build Status](https://travis-ci.org/MoOx/postcss-message-helpers.png)](https://travis-ci.org/MoOx/postcss-message-helpers)
+# postcss-message-helpers
+
+[![Build Status](https://travis-ci.org/MoOx/postcss-message-helpers.svg?branch=master)](https://travis-ci.org/MoOx/postcss-message-helpers)
+
 
 > [PostCSS](https://github.com/postcss/postcss) helpers to throw or output GNU style messages.
 
