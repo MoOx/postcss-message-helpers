@@ -8,9 +8,12 @@
 
 ---
 
-> [PostCSS](https://github.com/postcss/postcss) helpers to throw or output GNU style messages.
+> [PostCSS](https://github.com/postcss/postcss) helpers to throw or output GNU
+> style messages.
 
-This modules offers you some function to throw or just output messages with [GNU style](https://www.gnu.org/prep/standards/html_node/Errors.html): `sourcefile:lineno:column: message`
+This modules offers you some function to throw or just output messages with
+[GNU style](https://www.gnu.org/prep/standards/html_node/Errors.html):
+`sourcefile:lineno:column: message`
 
 ## Installation
 
@@ -19,15 +22,15 @@ $ npm install postcss-message-helpers
 ```
 
 ```js
-var messageHelpers = require("postcss-message-helpers")
+var messageHelpers = require("postcss-message-helpers");
 ```
 
 ## Usage
 
 ### `var fnValue = messageHelpers.try(fn, source)`
 
-Execute `fn` an return the value.
-If an exception is thrown during the process, the exception will be catched, enhanced from source & re-throw.
+Execute `fn` an return the value. If an exception is thrown during the process,
+the exception will be catched, enhanced from source & re-throw.
 
 ### `var sourceMessage = messageHelpers.message(message, source)`
 
@@ -42,12 +45,12 @@ Returns `sourcefile:lineno:column` for a given `source` postcss object.
 
 ```js
 // dependencies
-var fs = require("fs")
-var postcss = require("postcss")
-var messageHelpers = require("postcss-message-helpers")
+var fs = require("fs");
+var postcss = require("postcss");
+var messageHelpers = require("postcss-message-helpers");
 
 // css to be processed
-var css = fs.readFileSync("input.css", "utf8")
+var css = fs.readFileSync("input.css", "utf8");
 
 // process css
 var output = postcss()
@@ -56,18 +59,19 @@ var output = postcss()
       // will catch, adjust error stack, line, column & message (gnu style) then re-throw
       messageHelpers.try(function IwillThrow() {
         if (decl.value.indexOf("error(") > -1) {
-          throw new Error("error detected: " + decl.value)
+          throw new Error("error detected: " + decl.value);
         }
-      }, decl.source)
+      }, decl.source);
 
       // will output a gnu style warning
       if (decl.value.indexOf("warning(") > -1) {
-        console.warning(messageHelpers.message("warning: " + decl.value, decl.source))
+        console.warning(
+          messageHelpers.message("warning: " + decl.value, decl.source)
+        );
       }
-    })
+    });
   })
-  .process(css)
-  .css
+  .process(css).css;
 ```
 
 Checkout [tests](test) for more examples.
@@ -76,7 +80,8 @@ Checkout [tests](test) for more examples.
 
 ## Contributing
 
-Work on a branch, install dev-dependencies, respect coding style & run tests before submitting a bug fix or a feature.
+Work on a branch, install dev-dependencies, respect coding style & run tests
+before submitting a bug fix or a feature.
 
     $ git clone https://github.com/MoOx/postcss-message-helpers.git
     $ git checkout -b patch-1
@@ -90,5 +95,5 @@ Work on a branch, install dev-dependencies, respect coding style & run tests bef
 ## Security contact information
 
 To report a security vulnerability, please use the
-[Tidelift security contact](https://tidelift.com/security).
-Tidelift will coordinate the fix and disclosure.
+[Tidelift security contact](https://tidelift.com/security). Tidelift will
+coordinate the fix and disclosure.

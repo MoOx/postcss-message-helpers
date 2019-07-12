@@ -1,7 +1,7 @@
 /**
  * Constants
  */
-var SPLITTER = "\n    at "
+var SPLITTER = "\n    at ";
 
 /**
  * PostCSS helpers
@@ -10,7 +10,7 @@ module.exports = {
   sourceString: sourceString,
   message: formatMessage,
   try: tryCatch
-}
+};
 
 /**
  * Returns GNU style source
@@ -18,17 +18,17 @@ module.exports = {
  * @param {Object} source
  */
 function sourceString(source) {
-  var message = "<css input>"
+  var message = "<css input>";
   if (source) {
     if (source.input && source.input.file) {
-      message = source.input.file
+      message = source.input.file;
     }
     if (source.start) {
-      message += ":" + source.start.line + ":" + source.start.column
+      message += ":" + source.start.line + ":" + source.start.column;
     }
   }
 
-  return message
+  return message;
 }
 
 /**
@@ -39,7 +39,7 @@ function sourceString(source) {
  * @return {String}
  */
 function formatMessage(message, source) {
-  return sourceString(source) + ": " + message
+  return sourceString(source) + ": " + message;
 }
 
 /**
@@ -50,32 +50,31 @@ function formatMessage(message, source) {
  */
 function tryCatch(fn, source) {
   try {
-    return fn()
-  }
-  catch (err) {
-    err.originalMessage = err.message
-    err.message = formatMessage(err.message, source)
+    return fn();
+  } catch (err) {
+    err.originalMessage = err.message;
+    err.message = formatMessage(err.message, source);
 
     // if source seems interesting, enhance error
     if (typeof source === "object") {
       // add a stack item if something interesting available
       if ((source.input && source.input.file) || source.start) {
-        var stack = err.stack.split(SPLITTER)
-        var firstStackItem = stack.shift()
-        stack.unshift(sourceString(source))
-        stack.unshift(firstStackItem)
-        err.stack = stack.join(SPLITTER)
+        var stack = err.stack.split(SPLITTER);
+        var firstStackItem = stack.shift();
+        stack.unshift(sourceString(source));
+        stack.unshift(firstStackItem);
+        err.stack = stack.join(SPLITTER);
       }
 
       if (source.input && source.input.file) {
-        err.fileName = source.input.file
+        err.fileName = source.input.file;
       }
       if (source.start) {
-        err.lineNumber = source.start.line
-        err.columnNumber = source.start.column
+        err.lineNumber = source.start.line;
+        err.columnNumber = source.start.column;
       }
     }
 
-    throw err
+    throw err;
   }
 }
