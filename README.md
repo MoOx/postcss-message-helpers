@@ -1,6 +1,6 @@
 # postcss-message-helpers
 
-[![Build Status](https://travis-ci.org/MoOx/postcss-message-helpers.svg?branch=master)](https://travis-ci.org/MoOx/postcss-message-helpers)
+[![Build Status](https://github.com/MoOx/postcss-message-helpers/workflows/Build/badge.svg)](https://github.com/MoOx/postcss-message-helpers/actions)
 
 ---
 
