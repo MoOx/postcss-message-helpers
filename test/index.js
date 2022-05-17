@@ -3,7 +3,7 @@ var PostCSS = require("postcss");
 var messageHelpers = require("..");
 
 var postcss = PostCSS().use(function(styles) {
-  styles.eachDecl(function transformDecl(decl) {
+  styles.walkDecls(function transformDecl(decl) {
     decl.value = messageHelpers.try(function IwillThrow() {
       if (decl.value.indexOf("error(") > -1) {
         throw new Error("error detected: " + decl.value);
@@ -55,13 +55,12 @@ test("postcss try helper", function(t) {
     var stack2 = e.stack.split("\n");
     t.equal(
       stack2[0],
-      "Error: <css input>:2:6: error detected: error(alert!)",
-      "try() should have an explicit message (<css input>:lineno:column: message)"
+      "Error: <input css>:2:6: error detected: error(alert!)",
+      "try() should have an explicit message (<input css>:lineno:column: message)"
     );
-    t.equal(
-      stack2[1],
-      "    at <css input>:2:6",
-      "try() should have a new item in the stack trace (<css input>:lineno:column)"
+    t.ok(
+      stack2[1].startsWith("    at <input css") && stack2[1].endsWith(">:2:6"),
+      "try() should have a new item in the stack trace (<input css>:lineno:column)"
     );
   }
 
@@ -72,13 +71,12 @@ test("postcss try helper", function(t) {
     var stack3 = e.stack.split("\n");
     t.equal(
       stack3[0],
-      "Error: <css input>:2:6: error detected: ",
-      "try() should have an explicit message (<css input>:lineno:column: message)"
+      "Error: <input css>:2:6: error detected: ",
+      "try() should have an explicit message (<input css>:lineno:column: message)"
     );
-    t.equal(
-      stack3[2],
-      "    at <css input>:2:6",
-      "try() should have a new item in the stack trace (<css input>:lineno:column)"
+    t.ok(
+      stack3[2].startsWith("    at <input css") && stack3[2].endsWith(">:2:6"),
+      "try() should have a new item in the stack trace (<input css>:lineno:column)"
     );
   }
 

@@ -18,7 +18,7 @@ module.exports = {
  * @param {Object} source
  */
 function sourceString(source) {
-  var message = "<css input>";
+  var message = "<input css>";
   if (source) {
     if (source.input && source.input.file) {
       message = source.input.file;
